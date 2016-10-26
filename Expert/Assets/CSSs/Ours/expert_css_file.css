@@ -1,0 +1,45 @@
+﻿input.expert_css_input_center{
+    border:none;
+    outline:none;
+    border-style:none;
+    width:100%;
+    border-bottom:1px solid gray;
+    background-color:transparent;
+    border-radius:unset;
+    text-align:center;
+    box-shadow:unset;
+}
+
+.expert_center{
+   
+   padding-top:20px;
+    font-size:large;
+    text-align:center;
+    font-weight:bolder;
+    font-style:normal;
+    font-family:"B Traffic";
+}
+a{
+    font-style:normal;
+    font-weight:bold;
+}
+body{
+    font-family:"B Traffic";
+}
+.button_roundcorner{
+    border-radius:10px;
+
+}
+.bgcolor_greeb{
+
+}
+#verification_win{
+    font-size:xx-large;
+    text-align:center;
+}
+
+.ui-dialog-contain{
+    transition:height ease-out 1000ms;
+    transition:width ease-in 1000ms;
+
+}

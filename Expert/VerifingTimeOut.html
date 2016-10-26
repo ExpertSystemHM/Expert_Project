@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+   
+    <title></title>
+	<meta charset="utf-8" />
+    
+
+    
+</head>
+<body>
+
+    <div data-role="page" id="pagev">
+
+        <div data-role="main" class="ui-content">
+            <div ng-app="VerificationApp" ng-controller="verificationController">
+
+
+                <div ng-show="timer_show"><div><div ng-show="counter_show">{{timer_val}}Secs</div> <div ng-show="!counter_show">verifing Time out! try again!</div></div></div><div ng-show="!timer_show">ok!</div>
+            </div>
+            
+            <script>
+                
+                var app = angular.module("VerificationApp", []);
+               
+                app.controller("verificationController", function ($scope, $interval) {
+                    alert("fgdfdfdfd");
+                    $scope.counter_show = true;
+                    $scope.timer_show = true;
+                    $scope.timer_val = 10;
+                    var interval_id = 0;
+                    $scope.verified = function () {
+                        $scope.timer_show = false;
+                    }
+                    $scope.start_timer = function () {
+              
+                    };
+                    $scope.start_timer();
+                    interval_id = $interval(function () {
+
+                        $scope.timer_val--;
+                        if ($scope.timer_val == 0) {
+                            $interval.cancel(interval_id);
+                            $scope.should_show = false;
+                        }
+                    }, 1000);
+
+                });
+            </script>
+            </div>
+        </div>
+</body>
+</html>
