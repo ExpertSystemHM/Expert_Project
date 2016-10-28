@@ -1,4 +1,6 @@
-﻿var hub=null;
+﻿var hub = null;
+
+//_________________________________________________________________________________________
 function register_user(name,family,password,mobile,username){
     hub.server.registerUser(name, family, password, mobile, username).done(function (result) {
         if (result) {
@@ -16,8 +18,20 @@ function register_user(name,family,password,mobile,username){
             alert("already done with this user name!");
         }
     });
-
 }
+//_________________________________________________________________________________________
+function user_login(Email, password) {
+    hub.server.userVerification(Email, password).done(function (result) {
+        if (result) {
+            alert("login sucsess...");
+
+        } else {
+            alert("try again!");
+        }
+    });
+}
+
+//_________________________________________________________________________________________
 function TryAgainVerify() {
     getVerificationCode();
 
@@ -27,6 +41,8 @@ function TryAgainVerify() {
         scope.start_timer();
     });
 }
+
+//_________________________________________________________________________________________
 function getVerificationCode() {
     hub.server.getVerificationCode().done(function (result) {
         var scope = $("#verification_win").scope();
@@ -34,9 +50,10 @@ function getVerificationCode() {
             $scope.timer_val = 10;
             scope.verificationCode=result;
         });
-    });
-    
+    }); 
 }
+
+//_________________________________________________________________________________________
 function check_username_availablity( username) {
     hub.server.checkUserNameAvailablity(username).done(function (result) {
         if (result) {
@@ -45,30 +62,23 @@ function check_username_availablity( username) {
             alert("no,sorry!");
         }
     });
-
 }
+
+//_________________________________________________________________________________________
 $(function () {
     hub = $.connection.sysetemHub;
-   
-    
-   
     hub.client.showAppFace = function (type, message) {
         
         switch (type) {
-
             case 1:
-              
                 document.getElementById('successAudio').play();
                 $(':mobile-pagecontainer').pagecontainer('change', '#pageSuccess');
                 break;
             case 2:
-              
-
                 $(':mobile-pagecontainer').pagecontainer('change', '#pageVerify');
                 break;
         };
     };
-   
     $.connection.hub.start().done(function () {
         $('#btn_login').click(function () {
             hub.server.send("!", "1");
